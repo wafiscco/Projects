@@ -1,22 +1,14 @@
 /* -------------------------------------------
 Name: Hani Alwafi
-Student number: 155503188
-Email: halwafi@myseneca.ca
-Section: SEE
-Date: 08/07/2019
+Email: wafi.h9@gmail.com
+
+description: 
+Here I have defined all the functions that I have created in contacts.h file.
 ----------------------------------------------
-Assignment: 1
-Milestone:  4
----------------------------------------------- */
 
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 #include "contacts.h"
-
-
-// Get and store from standard input the values for Name
-// Put your code here that defines the Contact getName function:
 
 void getName(struct Name* name)
 {
@@ -36,8 +28,6 @@ void getName(struct Name* name)
 	scanf(" %[^\n]", (*name).lastName);
 };
 
-// Get and store from standard input the values for Address
-// Put your code here that defines the Contact getAddress function:
 void getAddress(struct Address* address)
 {
 	int valid = 0;
@@ -78,10 +68,6 @@ void getAddress(struct Address* address)
 	scanf(" %[^\n]", (*address).city);
 };
 
-
-
-// Get and store from standard input the values for Numbers
-// Put your code here that defines the Contact getNumbers function:
 void getNumbers(struct Numbers* number)
 {
 	char y;
