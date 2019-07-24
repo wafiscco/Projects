@@ -3,93 +3,55 @@ Name: Hani Alwafi
 Email: wafi.h9@gmail.com
 
 description: 
-Here I have defined all the functions that I have created in contacts.h file.
-----------------------------------------------
+This program allows the user to Inter their information.
+After the user input their information, the information will be displayed.
+
+I have used header files + functions + pointers and their address.
+As we can see I have defined all the functions in another C file called contacts.c.
+
+Enjoy trying the program.
+---------------------------------------------- */
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "contacts.h"
 
-void getName(struct Name* name)
+int main(void)
 {
-	char y;
-	printf("Please enter the contact's first name: ");
-	scanf(" %[^\n]", (*name).firstName);
+	
+	struct Contact cont = { {""} };
 
-	printf("Do you want to enter a middle initial(s)? (y or n): ");
-	scanf(" %c", &y);
-	if (y == 'y' || y == 'Y') {
-		printf("Please enter the contact's middle initial(s): ");
-		scanf(" %[^\n]", (*name).middleInitial);
-		y = ' ';
-	}
+	printf("Contact Management System\n");
+	printf("=========================\n");
 
-	printf("Please enter the contact's last name: ");
-	scanf(" %[^\n]", (*name).lastName);
-};
+	getName(&cont.name);
+	getAddress(&cont.address);
+	getNumbers(&cont.numbers);
 
-void getAddress(struct Address* address)
-{
-	int valid = 0;
-	char y;
-	do {
-		printf("Please enter the contact's street number: ");
-		scanf("%d", &(*address).streetNumber);
-		if ((*address).streetNumber > 0) {
-			valid = 1;
-		}
-		else {
-			valid = 0;
-			printf("Invalid number!\n");
-		}
-	} while (valid == 0);
-	printf("Please enter the contact's street name: ");
-	scanf(" %[^\n]", (*address).street);
+	printf("\nContact Details\n");
+	printf("===============\n");
 
-	printf("Do you want to enter an apartment number? (y or n): ");
-	scanf(" %c", &y);
-	if (y == 'y' || y == 'Y') { 
-		do {
-			printf("Please enter the contact's apartment number: ");
-			scanf("%d", &(*address).apartmentNumber);
-			if ((*address).apartmentNumber > 0) {
-				valid = 1;
-			}
-			else {
-				valid = 0;
-				printf("Invalid number!\n");
-			}
-			y = ' ';
-		} while (valid == 0);
-	}
-	printf("Please enter the contact's postal code: ");
-	scanf(" %[^\n]", (*address).postalCode);
-	printf("Please enter the contact's city: ");
-	scanf(" %[^\n]", (*address).city);
-};
+	printf("Name Details\n");
+	printf("------------\n");
+	printf("First name: %s\n", cont.name.firstName);
+	printf("Middle initial(s): %s\n",cont.name.middleInitial);
+	printf("Last name: %s\n\n", cont.name.lastName);
 
-void getNumbers(struct Numbers* number)
-{
-	char y;
-	printf("Do you want to enter a cell phone number? (y or n): ");
-	scanf(" %c", &y);
-	if (y == 'y' || y == 'Y') {
-		printf("Please enter the contact's cell phone number: ");
-		scanf(" %[^\n]", (*number).cell);
-		y = ' ';
-	}
-	printf("Do you want to enter a home phone number? (y or n): ");
-	scanf(" %c", &y);
-	if (y == 'y' || y == 'Y') {
-		printf("Please enter the contact's home phone number: ");
-		scanf(" %[^\n]", (*number).home);
-		y = ' ';
-	}
-	printf("Do you want to enter a business phone number? (y or n): ");
-	scanf(" %c", &y);
-	if (y == 'y' || y == 'Y') {
-		printf("Please enter the contact's business phone number: ");
-		scanf(" %[^\n]", (*number).business);
-		y = ' ';
-	}
+	printf("Address Details\n");
+	printf("---------------\n");
+	printf("Street number: %d\n", cont.address.streetNumber);
+	printf("Street name: %s\n", cont.address.street);
+	printf("Apartment: %d\n", cont.address.apartmentNumber);
+	printf("Postal code: %s\n", cont.address.postalCode);
+	printf("City: %s\n\n", cont.address.city);
+
+	printf("Phone Numbers\n");
+	printf("-------------\n");
+	printf("Cell phone number: %s\n", cont.numbers.cell);
+	printf("Home phone number: %s\n", cont.numbers.home);
+	printf("Business phone number: %s\n\n", cont.numbers.business);
+
+	printf("Structure test for Contact using functions done!\n");
+
+	return 0;
 }
